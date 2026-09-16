@@ -47,18 +47,37 @@ Still in early development.
 
 The shared contact form posts JSON to `/api/contact`. The route validates name
 (1–100 characters), email (up to 254), and message (1–5000), and rejects malformed
-requests. Valid requests currently return **503** with an explicit message that
-nothing was sent or stored. No email delivery is simulated.
+requests. A hidden honeypot rejects basic automated submissions. Valid requests
+send a plain-text email through the Resend Node.js SDK, with the visitor's email
+as `replyTo`. Success is returned only after Resend accepts the email; acceptance
+does not guarantee inbox delivery. The form disables inputs while sending,
+clears them on success, and retains them on failure.
 
-No environment variables are currently required. To enable delivery, implement
-the integration point in `app/api/contact/route.ts` using a server-side provider.
-Define that provider's credentials and recipient in server-only environment
-variables (never `NEXT_PUBLIC_*`), handle provider failures with a non-2xx JSON
-response `{ success: false, error: "..." }`, and return `{ success: true }` only
-after confirmed acceptance. Then update the form's delivery notice. Add abuse
-protection appropriate to your deployment before enabling a public email sender.
+Copy `.env.example` to `.env.local` and set these server-only variables (never
+prefix them with `NEXT_PUBLIC_`):
 
-The form handles submitting, success, validation/delivery failure, and network
-failure; it retains inputs on failure and prevents duplicate pending requests.
-Until delivery is configured, the success state can only be exercised using a
-mock response, not by sending real messages.
+- `RESEND_API_KEY`: a Resend API key with permission to send email.
+- `CONTACT_EMAIL`: your inbox address for receiving contact messages.
+- `CONTACT_FROM_EMAIL`: the sender address on your Resend-verified domain.
+
+In [Resend](https://resend.com/docs/dashboard/domains/introduction), add a domain
+you control and publish the required SPF and DKIM DNS records. Wait for domain
+verification before using a sender address on that domain. The `resend.dev`
+test sender is restricted to your Resend account email; use a verified domain
+for production. A Vercel-provided `vercel.app` subdomain is not a domain whose
+email DNS records you control.
+
+For production, open **Vercel → your project → Settings → Environment Variables**
+and add all three values to **Production** (and **Preview** if you want preview
+deployments to send email). Redeploy after adding or changing the values.
+Restart the local dev server after changing `.env.local`. Secret `.env*` files
+remain ignored by Git; only the empty `.env.example` template is tracked.
+
+Missing configuration and delivery failures return generic errors without
+exposing credentials or provider details. The honeypot is basic protection,
+not a rate limiter; monitor usage after making the form public.
+
+Run `node --test tests/contact.test.cjs` for contact validation, Resend SDK
+request/response, and form-state checks. These tests mock the provider's HTTP
+response; complete a real submission after configuring Resend and confirm it
+arrives in `CONTACT_EMAIL` and that Reply targets the visitor.

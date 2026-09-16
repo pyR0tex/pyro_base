@@ -24,14 +24,14 @@ export default function ContactForm() {
       });
       const result = await response.json();
       if (!response.ok || result.success !== true) {
-        throw new Error(typeof result.error === "string" ? result.error : "Your message could not be sent. Please try again.");
+        throw new Error("Contact submission failed");
       }
       setStatus("success");
-      setFeedback("Your message was sent. Thanks for getting in touch.");
+      setFeedback("Message sent. I'll get back to you soon.");
       form.reset();
-    } catch (error) {
+    } catch {
       setStatus("error");
-      setFeedback(error instanceof Error && error.message !== "Failed to fetch" ? error.message : "Unable to connect. Please check your connection and try again.");
+      setFeedback("Something went wrong. Please try again.");
     } finally {
       pending.current = false;
     }
@@ -39,9 +39,12 @@ export default function ContactForm() {
 
   const fieldClass = "w-full border border-neutral-700 bg-neutral-900/50 p-3 text-sm disabled:opacity-60";
   return (
-    <form onSubmit={onSubmit} aria-busy={status === "submitting"} aria-describedby={`${id}-notice`} className="space-y-4">
-      <p id={`${id}-notice`} className="text-xs leading-6 text-neutral-500">Message delivery is not configured yet. Submissions are not sent or stored.</p>
+    <form onSubmit={onSubmit} aria-busy={status === "submitting"} className="space-y-4">
       <fieldset disabled={status === "submitting"} className="space-y-4">
+        <div hidden aria-hidden="true">
+          <label htmlFor={`${id}-website`}>Leave this field empty</label>
+          <input id={`${id}-website`} name="website" tabIndex={-1} autoComplete="off" maxLength={200} />
+        </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2"><label htmlFor={`${id}-name`} className="block text-sm text-neutral-300">Name</label><input id={`${id}-name`} name="name" autoComplete="name" required maxLength={100} className={fieldClass} /></div>
           <div className="space-y-2"><label htmlFor={`${id}-email`} className="block text-sm text-neutral-300">Email</label><input id={`${id}-email`} name="email" type="email" autoComplete="email" required maxLength={254} className={fieldClass} /></div>
