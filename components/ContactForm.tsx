@@ -47,9 +47,9 @@ export default function ContactForm() {
           <div className="space-y-2"><label htmlFor={`${id}-email`} className="block text-sm text-neutral-300">Email</label><input id={`${id}-email`} name="email" type="email" autoComplete="email" required maxLength={254} className={fieldClass} /></div>
         </div>
         <div className="space-y-2"><label htmlFor={`${id}-message`} className="block text-sm text-neutral-300">Message</label><textarea id={`${id}-message`} name="message" rows={5} required maxLength={5000} className={`${fieldClass} resize-y`} /></div>
-        <button type="submit" className="border border-cyan-500/60 px-5 py-3 text-sm transition hover:bg-cyan-500/10 disabled:cursor-wait disabled:opacity-60">{status === "submitting" ? "Sending…" : "Send message"}</button>
+        <button type="submit" className="border border-red-500/60 px-5 py-3 text-sm transition hover:bg-red-500/10 disabled:cursor-wait disabled:opacity-60">{status === "submitting" ? "Sending…" : "Send message"}</button>
       </fieldset>
-      <p role="status" aria-live="polite" className={`text-sm leading-6 ${status === "error" ? "text-rose-400" : "text-cyan-400"}`}>{feedback}</p>
+      <p role="status" aria-live="polite" className={`text-sm leading-6 ${status === "error" ? "text-red-400" : "text-cyan-400"}`}>{feedback}</p>
     </form>
   );
 }

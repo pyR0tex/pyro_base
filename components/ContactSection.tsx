@@ -3,10 +3,10 @@ import ExternalLinks from "./ExternalLinks";
 
 export default function ContactSection() {
   return (
-    <section aria-labelledby="contact-heading" className="space-y-6 border border-cyan-500/20 border-l-2 border-l-cyan-600 bg-gradient-to-br from-neutral-900/70 to-cyan-950/20 p-5 sm:p-7">
+    <section aria-labelledby="contact-heading" className="space-y-6 border border-red-500/20 border-l-2 border-l-red-600 bg-gradient-to-br from-neutral-900/70 to-red-950/20 p-5 sm:p-7">
       <h2
         id="contact-heading"
-        className="text-xs tracking-[0.2em] text-cyan-300"
+        className="text-2xl font-semibold text-red-400"
       >
         CONTACT
       </h2>
