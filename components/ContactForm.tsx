@@ -22,6 +22,11 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Object.fromEntries(values)),
       });
+      if (response.status === 503) {
+        setStatus("error");
+        setFeedback("Contact form is not available yet. Please try again later.");
+        return;
+      }
       const result = await response.json();
       if (!response.ok || result.success !== true) {
         throw new Error("Contact submission failed");

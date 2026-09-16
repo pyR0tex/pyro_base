@@ -22,7 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    // Browser extensions can inject attributes such as data-tricentis-frame-token.
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${jetbrains.className} min-h-screen bg-neutral-950 text-neutral-100 antialiased`}
       >
