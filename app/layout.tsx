@@ -29,10 +29,10 @@ export default function RootLayout({
       >
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:bg-neutral-950 focus:p-4">Skip to content</a>
         <header className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-5 border-b border-neutral-800 px-6 py-5">
-          <Link href="/" className="font-semibold tracking-tight">
+          <Link href="/" className="font-semibold tracking-tight text-rose-500/80">
             {site.name}
           </Link>
-          <nav aria-label="Main navigation" className="flex flex-wrap gap-5 text-sm text-neutral-400">
+          <nav aria-label="Main navigation" className="flex flex-wrap gap-5 text-sm text-rose-500/80">
             {navigation.map((item) => <Link key={item.href} href={item.href} className="hover:text-cyan-400">{item.title}</Link>)}
           </nav>
         </header>

@@ -15,6 +15,7 @@ export const projects: Project[] = [
     description: "Location-based social application.",
     technologies: ["Next.js", "React", "Supabase", "PostGIS"],
     featured: true,
+    githubUrl: "https://github.com/pyR0tex/snapmap",
   },
   {
     title: "Student Performance ML",
@@ -22,5 +23,14 @@ export const projects: Project[] = [
     description: "Machine learning project focused on classification and model evaluation.",
     technologies: ["Python", "Machine Learning", "Logistic Regression", "Random Forest"],
     featured: true,
+    githubUrl: "https://github.com/pyR0tex/student_success_ai",
+  },
+  {
+    title: "Huffman Compressor",
+    slug: "huffman-compressor",
+    description: "Python command-line file compressor and decompressor using Huffman coding.",
+    technologies: ["Python", "Huffman Coding", "Algorithms", "CLI"],
+    featured: true,
+    githubUrl: "https://github.com/pyR0tex/HuffmanCompressor",
   },
 ];

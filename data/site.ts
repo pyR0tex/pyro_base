@@ -10,8 +10,8 @@ export const site = {
 };
 
 export const navigation = [
-  { href: "/projects", title: "Projects", description: "A curated archive of finished builds, larger projects, and case studies." },
-  { href: "/lab", title: "Lab", description: "Experiments, prototypes, small builds, and ideas I am exploring." },
   { href: "/about", title: "About", description: "Background, experience, interests, and more about me." },
+  { href: "/lab", title: "Lab", description: "Experiments, prototypes, small builds, and ideas I am exploring." },
   { href: "/notes", title: "Notes", description: "Technical notes, things I have learned, and useful references." },
+  { href: "/projects", title: "Projects", description: "A curated archive of finished builds, larger projects, and case studies." },
 ];

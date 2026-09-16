@@ -9,8 +9,8 @@ export default function Hero() {
         I code for fun. This is my dungeon of experiments & projects.
       </p>
       <div className="flex flex-wrap gap-3 pt-1">
-        <Link href="/projects" className="border border-cyan-500/60 px-4 py-2 text-sm transition hover:bg-cyan-500/10 hover:shadow-[0_0_20px_rgba(34,211,238,0.12)]">Explore Projects</Link>
-        <Link href="/about" className="border border-rose-500/60 px-4 py-2 text-sm transition hover:bg-rose-500/10 hover:shadow-[0_0_20px_rgba(244,63,94,0.12)]">About Me</Link>
+        <Link href="/projects" className="border border-cyan-500/60 px-4 py-2 text-sm text-neutral-100 transition hover:bg-cyan-500/10 hover:shadow-[0_0_20px_rgba(34,211,238,0.12)]">Explore Projects</Link>
+        <Link href="/about" className="border border-rose-500/60 px-4 py-2 text-sm text-neutral-100 transition hover:bg-rose-500/10 hover:shadow-[0_0_20px_rgba(244,63,94,0.12)]">About Me</Link>
       </div>
     </section>
   );

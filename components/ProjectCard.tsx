@@ -8,8 +8,8 @@ export default function ProjectCard({ project }: { project: Project }) {
       <ul aria-label="Technologies" className="mt-6 flex flex-wrap gap-2 text-xs text-neutral-300">
         {project.technologies.map((technology) => <li key={technology} className="border border-neutral-800 px-2 py-1">{technology}</li>)}
       </ul>
-      {(project.githubUrl || project.liveUrl) && <div className="mt-6 flex flex-wrap gap-5 text-sm text-cyan-400">
-        {project.githubUrl && <a href={project.githubUrl} className="hover:underline">GitHub ↗</a>}
+      {(project.githubUrl || project.liveUrl) && <div className="mt-6 flex flex-wrap gap-5 text-sm text-rose-500/60">
+        {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">GitHub ↗<span className="sr-only"> (opens in a new tab)</span></a>}
         {project.liveUrl && <a href={project.liveUrl} className="hover:underline">Live site ↗</a>}
       </div>}
     </article>
