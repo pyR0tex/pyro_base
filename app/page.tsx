@@ -1,31 +1,17 @@
-// app/page.tsx
+import Hero from "@/components/Hero";
+import NavigationCard from "@/components/NavigationCard";
+import FeaturedProjects from "@/components/FeaturedProjects";
+import { navigation } from "@/data/site";
+
 export default function HomePage() {
   return (
-    <section className="space-y-5">
-      <p className="text-xs uppercase tracking-[0.3em] text-neutral-500">
-        Index
-      </p>
-      <h1 className="text-4xl md:text-5xl font-bold">
-        Ro — Software Engineer
-      </h1>
-      <p className="max-w-2xl text-neutral-300">
-        I code for fun. This is my dungeon of experiments & projects.
-      </p>
-
-      <div className="mt-6 flex gap-3">
-        <a
-          href="/about"
-          className="px-4 py-2 border border-rose-500/60 text-sm hover:bg-rose-500/10 hover:shadow-[0_0_20px_rgba(244,63,94,0.4)] transition"
-        >
-          About Me
-        </a>
-        <a
-          href="/projects"
-          className="px-4 py-2 border border-cyan-500/60 text-sm hover:bg-cyan-500/10 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition"
-        >
-          Projects
-        </a>
-      </div>
-    </section>
+    <div className="space-y-16 sm:space-y-20">
+      <Hero />
+      <section aria-labelledby="explore-heading" className="space-y-5">
+        <h2 id="explore-heading" className="text-xs tracking-[0.2em] text-neutral-400">01 / EXPLORE</h2>
+        <div className="grid gap-4 sm:grid-cols-2">{navigation.map((item) => <NavigationCard key={item.href} {...item} />)}</div>
+      </section>
+      <FeaturedProjects />
+    </div>
   );
 }
