@@ -32,7 +32,7 @@ export default function RootLayout({
           <Link href="/" className="font-semibold tracking-tight text-rose-500/80">
             {site.name}
           </Link>
-          <nav aria-label="Main navigation" className="flex flex-wrap gap-5 text-sm text-rose-500/80">
+          <nav aria-label="Main navigation" className="flex flex-wrap gap-5 text-sm text-cyan-400">
             {navigation.map((item) => <Link key={item.href} href={item.href} className="hover:text-cyan-400">{item.title}</Link>)}
           </nav>
         </header>
